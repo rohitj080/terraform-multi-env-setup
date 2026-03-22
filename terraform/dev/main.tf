@@ -2,6 +2,15 @@ provider "aws" {
   region = var.aws_region
 }
 
+# ---------------- S3 (optional resource bucket) ----------------
+module "s3" {
+  source = "../../modules/s3"
+
+  bucket_name = "test-poc-jordan-dev-12345"   # ⚠️ must be globally unique
+  environment = "dev"
+}
+
+# ---------------- VPC ----------------
 module "vpc" {
   source = "../../modules/vpc"
 
@@ -11,6 +20,7 @@ module "vpc" {
   name        = "dev-vpc"
 }
 
+# ---------------- EC2 ----------------
 module "ec2" {
   source = "../../modules/ec2"
 
@@ -20,4 +30,5 @@ module "ec2" {
   sg_id         = module.vpc.sg_id
   key_name      = "my-key"
   name          = "dev-ec2"
+  environment   = "dev"
 }
