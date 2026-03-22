@@ -1,8 +1,20 @@
-variable "cidr_block" {}
-variable "subnet_cidr" {}
-variable "availability_zone1" {}
-variable "name" {
-    default = "multi-env-github-actions-vpc"
+variable "cidr_block" {
+  type = string
 }
-variable "public_subnet1_cidr" {}
-variable "environment" {}
+
+variable "public_subnet1_cidr" {
+  type = string
+}
+
+variable "availability_zone1" {
+  type = string
+}
+
+variable "name" {
+  type    = string
+  default = "multi-env-github-actions-vpc"
+}
+
+variable "environment" {
+  type = string
+}
