@@ -5,7 +5,7 @@ provider "aws" {
 # ---------------- S3 (Terraform state bucket) ----------------
 module "s3" {
   source      = "../../modules/s3"
-  bucket_name = "test-poc-kivi-tfstate"   # dynamic env
+  bucket_name = "test-poc-${var.environment}-viki-tfstate   # dynamic env
   environment = var.environment
 }
 
