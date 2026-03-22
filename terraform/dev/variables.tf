@@ -1,23 +1,29 @@
 variable "aws_region" {
-  type = string
+  description = "AWS region"
+  type        = string
 }
 
 variable "vpc_cidr" {
-  type = string
+  description = "VPC CIDR block"
+  type        = string
 }
 
 variable "subnet_cidr" {
-  type = string
+  description = "Public subnet CIDR block"
+  type        = string
 }
 
 variable "availability_zone1" {
-  type = string
-}
-
-variable "ami_id" {
-  type = string
+  description = "Availability Zone"
+  type        = string
 }
 
 variable "instance_type" {
-  type = string
+  description = "EC2 instance type"
+  type        = string
+}
+
+variable "ami_id" {
+  description = "AMI ID for EC2"
+  type        = string
 }
