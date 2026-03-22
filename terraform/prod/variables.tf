@@ -31,5 +31,4 @@ variable "ami_id" {
 variable "environment" {
   description = "Environment name (dev/uat/prod)"
   type        = string
-  default     = "dev"
 }
