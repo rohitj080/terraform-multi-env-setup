@@ -1,5 +1,5 @@
 variable "ami_id" {
-  description = "AMI ID for EC2 instance"
+  description = "AMI ID for the EC2 instance"
   type        = string
 }
 
@@ -24,11 +24,11 @@ variable "key_name" {
 }
 
 variable "name" {
-  description = "Name tag for EC2 instance"
+  description = "Name tag for the EC2 instance"
   type        = string
 }
 
 variable "environment" {
-  description = "Environment name (dev/uat/prod)"
+  description = "Environment (dev/uat/prod)"
   type        = string
 }
