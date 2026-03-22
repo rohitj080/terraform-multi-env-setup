@@ -43,15 +43,21 @@ jobs:
         run: terraform init
         working-directory: terraform/${{ github.event.inputs.environment }}
 
-      # ---------------- PLAN DESTROY ----------------
-      - name: Terraform Plan Destroy
-        run: terraform plan -destroy -out=tfplan
+      # # ---------------- PLAN DESTROY ----------------
+      # - name: Terraform Plan Destroy
+      #   run: terraform plan -destroy -out=tfplan
+      #   working-directory: terraform/${{ github.event.inputs.environment }}
+
+      - name: Terraform Destroy Plan
+        run: terraform plan -destroy -var="environment=${{ github.event.inputs.environment }}" -out=tfplan
         working-directory: terraform/${{ github.event.inputs.environment }}
 
       # 👉 Show what will be deleted
       - name: Show Destroy Plan
         run: terraform show tfplan
         working-directory: terraform/${{ github.event.inputs.environment }}
+
+      
 
       # ---------------- DESTROY ----------------
       - name: Terraform Destroy Apply
