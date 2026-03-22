@@ -1,4 +1,4 @@
-resource "aws_vpc" "multi-env-vpc" {
+resource "aws_vpc" "multi_env_vpc" {
   cidr_block = var.cidr_block
 
   tags = {
