@@ -30,17 +30,17 @@ jobs:
       - name: Show selected environment
         run: echo "Deploying to ${{ github.event.inputs.environment }}"
 
-      # - name: Terraform Init
-      #   run: terraform init
-      #   working-directory: terraform/${{ github.event.inputs.environment }}
+      - name: Terraform Init
+        run: terraform init
+        working-directory: terraform/${{ github.event.inputs.environment }}
 
-      # - name: Terraform Validate
-      #   run: terraform validate
-      #   working-directory: terraform/${{ github.event.inputs.environment }}
+      - name: Terraform Validate
+        run: terraform validate
+        working-directory: terraform/${{ github.event.inputs.environment }}
 
-      # - name: Terraform Plan
-      #   run: terraform plan
-      #   working-directory: terraform/${{ github.event.inputs.environment }}
+      - name: Terraform Plan
+        run: terraform plan
+        working-directory: terraform/${{ github.event.inputs.environment }}
 
       # Terraform Apply for dev/uat (auto-approve)
       - name: Terraform Apply (dev/uat)
