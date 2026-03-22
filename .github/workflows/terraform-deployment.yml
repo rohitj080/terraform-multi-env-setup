@@ -47,9 +47,14 @@ jobs:
         run: terraform validate
         working-directory: terraform/${{ github.event.inputs.environment }}
 
+      # # ---------------- PLAN ----------------
+      # - name: Terraform Plan
+      #   run: terraform plan -out=tfplan
+      #   working-directory: terraform/${{ github.event.inputs.environment }}
+
       # ---------------- PLAN ----------------
       - name: Terraform Plan
-        run: terraform plan -out=tfplan
+        run: terraform plan -var="environment=${{ github.event.inputs.environment }}" -out=tfplan
         working-directory: terraform/${{ github.event.inputs.environment }}
 
       # 👉 Show plan output clearly
