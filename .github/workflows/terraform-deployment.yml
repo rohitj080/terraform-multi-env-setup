@@ -64,7 +64,7 @@ jobs:
       #   working-directory: terraform/${{ github.event.inputs.environment }}
 
       # ---------------- APPLY (PROD - manual approval) ----------------
-      - name: Terraform Apply (prod)
+      - name: Terraform Apply (dev)
         if: github.event.inputs.environment == 'dev'
         run: terraform apply tfplan
         working-directory: terraform/${{ github.event.inputs.environment }}
