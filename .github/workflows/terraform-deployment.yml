@@ -17,7 +17,7 @@ jobs:
     name: Deploy to ${{ github.event.inputs.environment }}
     runs-on: ubuntu-latest
 
-    # Optional: links to GitHub Environment (create in repo settings)
+    # Optional: link to GitHub Environment (create in repo settings)
     environment: ${{ github.event.inputs.environment }}
 
     steps:
@@ -42,6 +42,14 @@ jobs:
         run: terraform plan
         working-directory: terraform/${{ github.event.inputs.environment }}
 
-      - name: Terraform Apply
+      # Terraform Apply for dev/uat (auto-approve)
+      - name: Terraform Apply (dev/uat)
+        if: github.event.inputs.environment != 'prod'
         run: terraform apply -auto-approve
         working-directory: terraform/${{ github.event.inputs.environment }}
+
+      # Terraform Apply for prod (manual approval via GitHub Environment)
+      - name: Terraform Apply (prod)
+        if: github.event.inputs.environment == 'prod'
+        run: terraform apply
+        working-directory: terraform/prod
