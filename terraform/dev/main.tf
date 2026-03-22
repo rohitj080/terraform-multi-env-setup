@@ -1,1 +1,3 @@
-Hi main
+module "vpc" {
+  source = "../../modules/vpc"
+}
