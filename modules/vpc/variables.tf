@@ -2,17 +2,16 @@ variable "cidr_block" {
   type = string
 }
 
-variable "public_subnet1_cidr" {
+variable "subnet_cidr" {
   type = string
 }
 
-variable "availability_zone1" {
+variable "az" {
   type = string
 }
 
 variable "name" {
-  type    = string
-  default = "multi-env-github-actions-vpc"
+  type = string
 }
 
 variable "environment" {
