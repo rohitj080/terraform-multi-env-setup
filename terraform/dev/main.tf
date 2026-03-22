@@ -18,6 +18,7 @@ module "vpc" {
   subnet_cidr = var.subnet_cidr
   az          = var.availability_zone1
   name        = "dev-vpc"
+  environment = "dev"
 }
 
 # ---------------- EC2 ----------------
