@@ -1,0 +1,47 @@
+name: Terraform Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select environment to deploy"
+        required: true
+        type: choice
+        options:
+          - dev
+          - uat
+          - prod
+
+jobs:
+  terraform:
+    name: Deploy to ${{ github.event.inputs.environment }}
+    runs-on: ubuntu-latest
+
+    # Optional: links to GitHub Environment (create in repo settings)
+    environment: ${{ github.event.inputs.environment }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Show selected environment
+        run: echo "Deploying to ${{ github.event.inputs.environment }}"
+
+      - name: Terraform Init
+        run: terraform init
+        working-directory: terraform/${{ github.event.inputs.environment }}
+
+      - name: Terraform Validate
+        run: terraform validate
+        working-directory: terraform/${{ github.event.inputs.environment }}
+
+      - name: Terraform Plan
+        run: terraform plan
+        working-directory: terraform/${{ github.event.inputs.environment }}
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        working-directory: terraform/${{ github.event.inputs.environment }}
