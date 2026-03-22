@@ -1,7 +1,11 @@
 output "subnet_id" {
-  value = aws_subnet.public_subnet1.id
+  value = aws_subnet.public.id
 }
 
 output "vpc_id" {
-  value = aws_vpc.multi-env-vpc.id
+  value = aws_vpc.main.id
+}
+
+output "sg_id" {
+  value = aws_security_group.ec2_sg.id
 }
